@@ -6,8 +6,8 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                sh '''sudo apt update
-                  sudo apt install docker.io -y
+                sh '''sudo dnf install docker -y
+                  sudo systemctl start docker
                   sudo docker build -f Dockerfile -t webserver:latest .
                   sudo docker images -a
                   '''
